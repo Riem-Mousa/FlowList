@@ -21,13 +21,20 @@ JavaScript (ES6+): Interactive app logic and DOM manipulation.
 
 ---
 
- Getting Started
+Live Demo
+
+You can test the live application here:  
+[FlowList Live Demo](https://riem-mousa.github.io/FlowList/)**
+
+---
+
+Getting Started
 
 To view or run this project locally:
 
 1. Clone the repository:
-   ````bash
-   git clone https://github.com/Riem-Mousa/FlowList.git
+   ```bash
+   git clone [https://github.com/Riem-Mousa/FlowList.git](https://github.com/Riem-Mousa/FlowList.git)
    
 2. Open index.html in your browser
 
