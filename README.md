@@ -27,7 +27,7 @@ To view or run this project locally:
 
 1. Clone the repository:
    ````bash
-   git clone [https://github.com/Riem-Mousa/FlowList.git](https://github.com/Riem-Mousa/FlowList.git)
+   git clone [https://github.com/Riem-Mousa/FlowList.git]
    
 1. Open index.html in your browser
 
