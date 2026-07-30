@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowList — Your Daily Tasks</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <div class="app-shell">
+    <header class="top-bar">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">✦</span>
+        <div>
+          <h1>FlowList</h1>
+          <p class="brand-tagline">Plan it. Do it. Feel great.</p>
+        </div>
+      </div>
+
+      <div class="header-stats">
+        <div class="stat-pill">
+          <span class="stat-icon">📋</span>
+          <span id="stat-total">0</span> total
+        </div>
+        <div class="stat-pill stat-active">
+          <span class="stat-icon">🔥</span>
+          <span id="stat-active">0</span> active
+        </div>
+        <div class="stat-pill stat-done">
+          <span class="stat-icon">✅</span>
+          <span id="stat-done">0</span> done
+        </div>
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <aside class="sidebar">
+        <section class="panel progress-panel">
+          <h2>Progress</h2>
+          <div class="progress-ring-wrap">
+            <svg class="progress-ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="progress-ring-bg" cx="60" cy="60" r="52"></circle>
+              <circle class="progress-ring-fill" id="progress-ring" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <div class="progress-ring-label">
+              <span id="progress-percent">0%</span>
+              <small>complete</small>
+            </div>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progress-bar"></div>
+          </div>
+          <p id="task-count" class="task-count" aria-live="polite"></p>
+        </section>
+
+        <section class="panel add-panel">
+          <h2>Add a task</h2>
+          <form id="task-form" class="task-form">
+            <input
+              type="text"
+              id="task-input"
+              placeholder="What needs your focus today?"
+              autocomplete="off"
+              maxlength="200"
+              aria-label="New task"
+            />
+            <div class="priority-picker" role="group" aria-label="Priority">
+              <label class="priority-option">
+                <input type="radio" name="priority" value="low" checked />
+                <span class="priority-chip low">🌿 Low</span>
+              </label>
+              <label class="priority-option">
+                <input type="radio" name="priority" value="medium" />
+                <span class="priority-chip medium">⚡ Medium</span>
+              </label>
+              <label class="priority-option">
+                <input type="radio" name="priority" value="high" />
+                <span class="priority-chip high">🔴 High</span>
+              </label>
+            </div>
+            <button type="submit" class="btn-primary">
+              <span aria-hidden="true">＋</span> Add task
+            </button>
+          </form>
+        </section>
+
+        <section class="panel filter-panel">
+          <h2>View</h2>
+          <div class="filter-tabs" role="tablist">
+            <button type="button" class="filter-tab active" data-filter="all" role="tab">All</button>
+            <button type="button" class="filter-tab" data-filter="active" role="tab">Active</button>
+            <button type="button" class="filter-tab" data-filter="completed" role="tab">Done</button>
+          </div>
+          <button type="button" id="clear-completed" class="btn-ghost" disabled>
+            🧹 Clear completed
+          </button>
+        </section>
+      </aside>
+
+      <main class="content">
+        <div id="all-done-banner" class="all-done-banner hidden" role="status">
+          <span class="banner-icons" aria-hidden="true">🌟 🎊 💪 ✨</span>
+          <div>
+            <strong>All tasks complete!</strong>
+            <p id="banner-message">You finished everything on your list.</p>
+          </div>
+        </div>
+
+        <ul id="task-list" class="task-list" aria-label="Tasks"></ul>
+
+        <div id="filter-empty" class="filter-empty hidden">
+          <span class="empty-icon" aria-hidden="true">🔍</span>
+          <h3>No tasks in this view</h3>
+          <p>Try another filter or add a new task.</p>
+        </div>
+
+        <div id="empty-state" class="empty-state">
+          <span class="empty-icon" aria-hidden="true">📝</span>
+          <h3>Your canvas is clear</h3>
+          <p>Add your first task and start building momentum.</p>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="celebration-overlay" class="celebration-overlay hidden" aria-hidden="true">
+    <canvas id="confetti-canvas"></canvas>
+    <div class="celebration-card">
+      <div class="celebration-icons" aria-hidden="true">
+        <span class="float-icon">🎉</span>
+        <span class="float-icon">⭐</span>
+        <span class="float-icon">🏆</span>
+        <span class="float-icon">💫</span>
+        <span class="float-icon">🌈</span>
+        <span class="float-icon">🙌</span>
+      </div>
+      <p class="celebration-badge">100% COMPLETE</p>
+      <h2 id="celebration-title">You did it!</h2>
+      <p id="celebration-message" class="celebration-message"></p>
+      <p class="celebration-sub">Every task on your list is done. Take a breath — you earned this moment.</p>
+      <button type="button" id="dismiss-celebration" class="btn-primary">Keep the good vibes going</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
